@@ -59,8 +59,8 @@ public class AlunoApplication
     {
         MongoClientURI uri  = new MongoClientURI("mongodb://nodejsportalacademico:leandro@ds047792.mongolab.com:47792/nodejsportalacademico"); 
         MongoClient mongo = new MongoClient(uri);
-        DB db = mongo.getDB("portalacademico");
-        DBCollection col = db.getCollection("portalacademico");
+        DB db = mongo.getDB("nodejsportalacademico");
+        DBCollection col = db.getCollection("nodejsportalacademico");
         //read example
         DBCursor cursor = col.find();
         List<Aluno> jetskies = new ArrayList<Aluno>();
