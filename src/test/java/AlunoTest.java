@@ -18,8 +18,8 @@ public class AlunoTest
 	public void testDescricao() {
 		AlunoServlet sv = new AlunoServlet();
 		Aluno j = new Aluno(null, "Leandro", 10, 1, "1/2015", "120027365");
-		String erroQueDeveAcontecer = "O nome do aluno deve ter no mínimo 10 caracteres.";
-		String erroRetornado = "O nome do aluno deve ter no mínimo 10 caracteres.";
+		String erroQueDeveAcontecer = "b";
+		String erroRetornado = "b";
 		assertEquals("São iguais", erroQueDeveAcontecer, erroRetornado);
 	}
 }
