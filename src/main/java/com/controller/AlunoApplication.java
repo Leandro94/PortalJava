@@ -89,7 +89,7 @@ public class AlunoApplication
 			mensagem = ex.getMessage();
 		}
 		if(nome.length() < 10)
-			mensagem = "Sua descrição deve conter 10 caracteres";
+			mensagem = "a";
 		return mensagem;
 	}
 }
