@@ -25,10 +25,10 @@ public class AlunoApplication
     	String mensagem = null;
     	try
     	{
-            MongoClientURI uri  = new MongoClientURI("mongodb://nodejsportalacademico:leandro@ds047792.mongolab.com:47792/nodejsportalacademico"); 
+            MongoClientURI uri  = new MongoClientURI("mongodb://portaljava:portaljava@ds047742.mongolab.com:47742/portaljava"); 
             MongoClient mongo = new MongoClient(uri);
-            DB db = mongo.getDB("alunos");
-	        DBCollection col = db.getCollection("alunos");
+            DB db = mongo.getDB("portaljava");
+            DBCollection col = db.getCollection("portaljava");
 	        
 	        //create user
 	        BasicDBObjectBuilder docBuilder = BasicDBObjectBuilder.start();
@@ -57,10 +57,10 @@ public class AlunoApplication
 	
 	public List<Aluno> todos() throws Exception
     {
-        MongoClientURI uri  = new MongoClientURI("mongodb://nodejsportalacademico:leandro@ds047792.mongolab.com:47792/nodejsportalacademico"); 
+        MongoClientURI uri  = new MongoClientURI("mongodb://portaljava:portaljava@ds047742.mongolab.com:47742/portaljava"); 
         MongoClient mongo = new MongoClient(uri);
-        DB db = mongo.getDB("nodejsportalacademico");
-        DBCollection col = db.getCollection("nodejsportalacademico");
+        DB db = mongo.getDB("portaljava");
+        DBCollection col = db.getCollection("portaljava");
         //read example	
         DBCursor cursor = col.find();
         List<Aluno> jetskies = new ArrayList<Aluno>();
