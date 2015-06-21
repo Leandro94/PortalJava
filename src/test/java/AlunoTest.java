@@ -20,6 +20,6 @@ public class AlunoTest
 		Aluno j = new Aluno(null, "Leandro", 10, 1, "1/2015", "120027365");
 		String erroQueDeveAcontecer = "b";
 		String erroRetornado = "b";
-		assertEquals("São iguais", erroQueDeveAcontecer, erroRetornado);
+		assertEquals("c", erroQueDeveAcontecer, erroRetornado);
 	}
 }
