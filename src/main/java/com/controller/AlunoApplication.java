@@ -61,7 +61,7 @@ public class AlunoApplication
         MongoClient mongo = new MongoClient(uri);
         DB db = mongo.getDB("nodejsportalacademico");
         DBCollection col = db.getCollection("nodejsportalacademico");
-        //read example
+        //read example	
         DBCursor cursor = col.find();
         List<Aluno> jetskies = new ArrayList<Aluno>();
         while(cursor.hasNext())
