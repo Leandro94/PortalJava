@@ -86,27 +86,27 @@ public class AlunoApplication
 		
 		if(aluno.getNome().isEmpty())
 		{
-			msg.append("O campo de nome está vazio!");
+			msg.append("O campo de nome esta vazio!");
 			return false;
 		}
 		if(aluno.getFalta()==0)
 		{
-			msg.append("O campo de nota está vazio!");
+			msg.append("O campo de nota esta vazio!");
 			return false;
 		}
 		if(aluno.getMatricula().isEmpty())
 		{
-			msg.append("O campo de matricula está vazio!");
+			msg.append("O campo de matricula esta vazio!");
 			return false;
 		}
 		if(aluno.getNota()==0)
 		{
-			msg.append("O campo de nota está vazio!");
+			msg.append("O campo de nota esta vazio!");
 			return false;
 		}
 		if(aluno.getPeriodo().isEmpty())
 		{
-			msg.append("O campo de periodo está vazio!");
+			msg.append("O campo de periodo esta vazio!");
 			return false;
 		}
 		msg = null;
