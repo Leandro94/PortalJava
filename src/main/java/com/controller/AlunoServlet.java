@@ -59,74 +59,17 @@ public class AlunoServlet extends HttpServlet
 			request.setAttribute("mensagem", mensagem);
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			
-			/*if(aluno.getFalta()==0)
-			{
-				msg.append("O campo de nota está vazio!");
-				return false;
-			}
-			if(aluno.getMatricula().isEmpty())
-			{
-				msg.append("O campo de matricula está vazio!");
-				return false;
-			}
-			if(aluno.getNota()==0)
-			{
-				msg.append("O campo de nota está vazio!");
-				return false;
-			}
-			if(aluno.getPeriodo().isEmpty())
-			{
-				msg.append("O campo de periodo está vazio!");
-				return false;
-			}*/
 		}
 		catch(Exception ex)
 		{
 			mensagem.append(ex.getMessage());
 		}
 }
-/*
-		a.setNome(request.getParameter("nome"));
-		a.setMatricula(request.getParameter("matricula"));
-		a.setPeriodo(request.getParameter("periodo"));
-		a.setFalta(Integer.parseInt(request.getParameter("falta")));
-		a.setNota(Integer.parseInt(request.getParameter("nota")));
-		String mensagem = jsa.validar(request.getParameter("nome"), request.getParameter("nota"), request.getParameter("periodo"), request.getParameter("falta"), request.getParameter("matricula"));
-		if(mensagem == null)
-			mensagem = jsa.create(j);
-		List<Aluno> jsl = new ArrayList<Aluno>();
-		try
-		{
-			jsl = jsa.todos();
-		}
-		catch(Exception ex)
-		{
-			mensagem = ex.getMessage();
-		}
-		getServletContext().setAttribute("alunos", jsl);
-		getServletContext().setAttribute("mensagem", mensagem);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-		rd.forward(request, response);
-	}
-	*/
-	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		AlunoApplication jsa = new AlunoApplication();
 		List<Aluno> cl = new ArrayList<Aluno>();
 		String mensagem = "";
-		/*try
-		{
-			jsl = jsa.todos();
-		}
-		catch(Exception ex)
-		{
-			mensagem = ex.getMessage();
-		}
-		getServletContext().setAttribute("alunos", jsl);
-		getServletContext().setAttribute("mensagem", mensagem);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-		rd.forward(request, response);*/
 		request.setAttribute("alunos", cl);
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
