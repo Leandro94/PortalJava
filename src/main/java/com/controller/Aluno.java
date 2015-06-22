@@ -11,8 +11,8 @@ public class Aluno {
 	private String matricula;
 	public Aluno(){}
 	
-	public Aluno(ObjectId _id, String nome, Integer nota, Integer falta,
-			String periodo, String matricula) {
+	public Aluno(ObjectId _id, String nome, Integer nota, Integer falta,String periodo, String matricula) 
+	{
 		super();
 		this._id = _id;
 		this.nome = nome;

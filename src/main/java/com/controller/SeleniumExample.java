@@ -18,7 +18,7 @@ public class SeleniumExample
 		WebElement  elementPeriodo = driver.findElement(By.name("periodo"));
 		WebElement  elementMatricula = driver.findElement(By.name("matricula"));
 		
-		elementNome.sendKeys("Leandro");
+		elementNome.sendKeys("Leandro Reis");
 		elementNota.sendKeys("70");
 		elementFalta.sendKeys("17");
 		elementPeriodo.sendKeys("2015");

@@ -18,14 +18,79 @@ public class AlunoServlet extends HttpServlet
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		AlunoApplication jsa = new AlunoApplication();
-		Aluno j = new Aluno();
+		Aluno a = new Aluno();
 		String id = request.getParameter("_id");
-
-		j.setNome(request.getParameter("nome"));
-		j.setMatricula(request.getParameter("matricula"));
-		j.setPeriodo(request.getParameter("periodo"));
-		j.setFalta(Integer.parseInt(request.getParameter("falta")));
-		j.setNota(Integer.parseInt(request.getParameter("nota")));
+		
+		StringBuffer mensagem = new StringBuffer();
+		
+		try
+		{
+			if(request.getParameter("nome").isEmpty() == false)
+			{
+				mensagem.append("Preencha o campo de nome!");
+				a.setNome(request.getParameter("nome"));
+			}
+			if(request.getParameter("nota").isEmpty() == false)
+			{
+				mensagem.append("Preencha o campo de nota!");
+				a.setNota(Integer.parseInt(request.getParameter("nota")));
+			}
+			if(request.getParameter("falta").isEmpty() == false)
+			{
+				mensagem.append("Preencha o campo de falta");
+				a.setFalta(Integer.parseInt(request.getParameter("falta")));
+			}
+			if(request.getParameter("matricula").isEmpty() == false)
+			{
+				mensagem.append("Preencha o campo de matricula!");
+				a.setNome(request.getParameter("matricula"));
+			}
+			if(request.getParameter("periodo").isEmpty() == false)
+			{
+				mensagem.append("Preencha o campo de periodo!");
+				a.setNome(request.getParameter("periodo"));
+			}
+			mensagem.append(jsa.create(a));
+			response.setContentType("text/html");
+			 
+			List<Aluno> cl = jsa.todos();
+			request.setAttribute("alunos", cl);
+			mensagem = mensagem.equals(null) ? mensagem.append("Salvo com sucesso!") : mensagem;
+			request.setAttribute("mensagem", mensagem);
+			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			
+			/*if(aluno.getFalta()==0)
+			{
+				msg.append("O campo de nota está vazio!");
+				return false;
+			}
+			if(aluno.getMatricula().isEmpty())
+			{
+				msg.append("O campo de matricula está vazio!");
+				return false;
+			}
+			if(aluno.getNota()==0)
+			{
+				msg.append("O campo de nota está vazio!");
+				return false;
+			}
+			if(aluno.getPeriodo().isEmpty())
+			{
+				msg.append("O campo de periodo está vazio!");
+				return false;
+			}*/
+		}
+		catch(Exception ex)
+		{
+			mensagem.append(ex.getMessage());
+		}
+}
+/*
+		a.setNome(request.getParameter("nome"));
+		a.setMatricula(request.getParameter("matricula"));
+		a.setPeriodo(request.getParameter("periodo"));
+		a.setFalta(Integer.parseInt(request.getParameter("falta")));
+		a.setNota(Integer.parseInt(request.getParameter("nota")));
 		String mensagem = jsa.validar(request.getParameter("nome"), request.getParameter("nota"), request.getParameter("periodo"), request.getParameter("falta"), request.getParameter("matricula"));
 		if(mensagem == null)
 			mensagem = jsa.create(j);
@@ -43,14 +108,14 @@ public class AlunoServlet extends HttpServlet
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
 	}
-	
+	*/
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
 		AlunoApplication jsa = new AlunoApplication();
-		List<Aluno> jsl = new ArrayList<Aluno>();
+		List<Aluno> cl = new ArrayList<Aluno>();
 		String mensagem = "";
-		try
+		/*try
 		{
 			jsl = jsa.todos();
 		}
@@ -61,7 +126,9 @@ public class AlunoServlet extends HttpServlet
 		getServletContext().setAttribute("alunos", jsl);
 		getServletContext().setAttribute("mensagem", mensagem);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-		rd.forward(request, response);
+		rd.forward(request, response);*/
+		request.setAttribute("alunos", cl);
+		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 	
 }

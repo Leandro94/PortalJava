@@ -14,13 +14,30 @@ import com.controller.*;
 
 public class AlunoTest
 {
-	@Test
+	/*@Test
 	public void testDescricao() 
 	{
 		AlunoServlet sv = new AlunoServlet();
-		Aluno j = new Aluno(null, "Leandro", 10, 1, "1/2015", "120027365");
+		Aluno a = new Aluno();
 		String erroQueDeveAcontecer = "b";
 		String erroRetornado = "b";
 		assertEquals("c", erroQueDeveAcontecer, erroRetornado);
+	}*/
+	@Test
+	public void testaAlunoComNota90DeveSerAprovado()
+	{
+		AlunoApplication alunoApplication = new AlunoApplication();
+		
+		Aluno a = new Aluno();
+		
+		a.setNome("Leandro");
+		a.setMatricula("34343");
+		a.setFalta(12);
+		a.setNota(90);
+		a.setPeriodo("1/2015");
+		
+		boolean valido = alunoApplication.validar(a, new StringBuffer());
+		
+		assertEquals(valido, true);
 	}
 }

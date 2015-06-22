@@ -20,9 +20,14 @@ import com.mongodb.WriteResult;
 import com.mongodb.util.JSON;
 public class AlunoApplication
 {
-	public String create(Aluno j)
+	/*public StringBuffer create(Aluno a)
+	{
+		
+	}*/
+	
+	public StringBuffer create(Aluno a)
     {
-    	String mensagem = null;
+		StringBuffer mensagem = new StringBuffer();
     	try
     	{
             MongoClientURI uri  = new MongoClientURI("mongodb://portaljava:portaljava@ds047742.mongolab.com:47742/portaljava"); 
@@ -34,23 +39,23 @@ public class AlunoApplication
 	        BasicDBObjectBuilder docBuilder = BasicDBObjectBuilder.start();
 	        ObjectId id = new ObjectId();
 	        docBuilder.add("_id", id);
-	        docBuilder.append("nome", j.getNome());
-	        docBuilder.append("nota", j.getNota());
-	        docBuilder.append("falta", j.getFalta());
-	        docBuilder.append("periodo", j.getPeriodo());
-	        docBuilder.append("matricula", j.getMatricula());
+	        docBuilder.append("nome", a.getNome());
+	        docBuilder.append("nota", a.getNota());
+	        docBuilder.append("falta", a.getFalta());
+	        docBuilder.append("periodo", a.getPeriodo());
+	        docBuilder.append("matricula", a.getMatricula());
 	        DBObject doc = docBuilder.get();
 	        WriteResult result = col.insert(doc);
 	        System.out.println(result.getUpsertedId());
 	        System.out.println(result.getN());
 	        System.out.println(result.isUpdateOfExisting());
 	        System.out.println(result.getLastConcern());
-	        j.set_id(id);
+	        a.set_id(id);
 	        mongo.close();
     	}
     	catch(Exception ex)
     	{
-    		mensagem = ex.getMessage();
+    		mensagem.append(ex.getMessage());
     	}
     	return mensagem;
     }
@@ -63,33 +68,48 @@ public class AlunoApplication
         DBCollection col = db.getCollection("portaljava");
         //read example	
         DBCursor cursor = col.find();
-        List<Aluno> jetskies = new ArrayList<Aluno>();
+        List<Aluno> alunos = new ArrayList<Aluno>();
         while(cursor.hasNext())
         {
     		Gson gson = new Gson();
     		DBObject current = cursor.next();
     		Aluno j = gson.fromJson(current.toString(), Aluno.class);
-            jetskies.add(j);
+            alunos.add(j);
         }
         //close resources
         mongo.close();
-    	return jetskies;
+    	return alunos;
     }
 	
-	public String validar(String nome, String nota, String periodo, String falta, String matricula)
+	public boolean validar(Aluno aluno,StringBuffer msg)
 	{
-		String mensagem = null;
-		try
+		
+		if(aluno.getNome().isEmpty())
 		{
-			Integer.parseInt(falta);
-			Integer.parseInt(nota);
+			msg.append("O campo de nome está vazio!");
+			return false;
 		}
-		catch(Exception ex)
+		if(aluno.getFalta()==0)
 		{
-			mensagem = ex.getMessage();
+			msg.append("O campo de nota está vazio!");
+			return false;
 		}
-		if(nome.length() < 10)
-			mensagem = "a";
-		return mensagem;
+		if(aluno.getMatricula().isEmpty())
+		{
+			msg.append("O campo de matricula está vazio!");
+			return false;
+		}
+		if(aluno.getNota()==0)
+		{
+			msg.append("O campo de nota está vazio!");
+			return false;
+		}
+		if(aluno.getPeriodo().isEmpty())
+		{
+			msg.append("O campo de periodo está vazio!");
+			return false;
+		}
+		msg = null;
+		return true;
 	}
 }
