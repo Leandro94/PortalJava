@@ -23,7 +23,7 @@ public class AlunoServlet extends HttpServlet
 
 		j.setNome(request.getParameter("nome"));
 		j.setMatricula(request.getParameter("matricula"));
-		j.setMatricula(request.getParameter("periodo"));
+		j.setPeriodo(request.getParameter("periodo"));
 		j.setFalta(Integer.parseInt(request.getParameter("falta")));
 		j.setNota(Integer.parseInt(request.getParameter("nota")));
 		String mensagem = jsa.validar(request.getParameter("nome"), request.getParameter("nota"), request.getParameter("periodo"), request.getParameter("falta"), request.getParameter("matricula"));

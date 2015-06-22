@@ -15,7 +15,8 @@ import com.controller.*;
 public class AlunoTest
 {
 	@Test
-	public void testDescricao() {
+	public void testDescricao() 
+	{
 		AlunoServlet sv = new AlunoServlet();
 		Aluno j = new Aluno(null, "Leandro", 10, 1, "1/2015", "120027365");
 		String erroQueDeveAcontecer = "b";
