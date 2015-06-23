@@ -4,7 +4,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 
 <html>
-	<head><h1>Cadastro de Alunos:</h1> </head><br><br><br>
+	<head><h1>Cadastro de Alunos:</h1> </head><br><br>
 	<body>
 		<input type="hidden" name="mensagem" id="mensagem">${mensagem }</input>
 		<div id="formulario">
@@ -19,7 +19,7 @@
 				<label>Nota</label><br>
 				<input type="text" name="nota" id="nota" value="${nota}" /><br>
 				<label>Falta</label><br>
-				<input type="text" name="falta" id="falta" value="${falta}" /><br>
+				<input type="text" name="falta" id="falta" value="${falta}" /><br><br>
 				<input type="submit" id="buscar" value="Salvar" />
 			</form>
 		</div>
@@ -27,21 +27,14 @@
 		<div id="lista">
 			<table>
 				<tr>
-					<th>Codigo</th>
+		
 					<th>Nome</th>
-					<th>Matricula</th>
-					<th>Periodo</th>
-					<th>Nota</th>
-					<th>Falta</th>
 				</tr>
 				<c:forEach items="${alunos}" var="a">
 				    <tr>      
-				        <td>${a._id}</td>
+	
 				        <td>${a.nome}</td>
-				        <td>${a.matricula}</td>
-				        <td>${a.periodo}</td>
-				        <td>${a.nota}</td>
-				        <td>${a.falta}</td>  
+				   
 				    </tr>
 				</c:forEach>
 			</table>
