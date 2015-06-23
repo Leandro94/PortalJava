@@ -4,21 +4,22 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 
 <html>
+	<head><h1>Cadastro de Alunos:</h1> </head><br><br><br>
 	<body>
 		<input type="hidden" name="mensagem" id="mensagem">${mensagem }</input>
 		<div id="formulario">
 			<form action="AlunoServlet" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>
 				<label>Nome</label><br>
-				<input type="text" name="nome" id="nome" value="${nome}"/>
+				<input type="text" name="nome" id="nome" value="${nome}"/><br>
 				<label>Matricula</label><br>
-				<input type="text" name="matricula" id="matricula" value="${matricula}" />
+				<input type="text" name="matricula" id="matricula" value="${matricula}" /><br>
 				<label>Periodo</label><br>
-				<input type="text" name="periodo" id="periodo" value="${periodo}" />
+				<input type="text" name="periodo" id="periodo" value="${periodo}" /><br>
 				<label>Nota</label><br>
-				<input type="text" name="nota" id="nota" value="${nota}" />
+				<input type="text" name="nota" id="nota" value="${nota}" /><br>
 				<label>Falta</label><br>
-				<input type="text" name="falta" id="falta" value="${falta}" />
+				<input type="text" name="falta" id="falta" value="${falta}" /><br>
 				<input type="submit" id="buscar" value="Salvar" />
 			</form>
 		</div>
