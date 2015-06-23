@@ -124,7 +124,7 @@ public class AlunoApplication
 			msg.append("O aluno ira fazer prova especial!");
 			return true;
 		}
-		if(aluno.getNota()>=90)
+		if(aluno.getNota()>=90 && aluno.getNota()<=100)
 		{
 			msg.append("O aluno ira receber uma homenagem por brilhar!");
 			return true;
