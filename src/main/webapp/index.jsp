@@ -5,7 +5,7 @@
 
 <html>
 	<body>
-		${mensagem }
+		<input type="hidden" name="mensagem" id="mensagem">${mensagem }</input>
 		<div id="formulario">
 			<form action="AlunoServlet" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>

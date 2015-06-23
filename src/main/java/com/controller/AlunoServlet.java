@@ -17,7 +17,7 @@ public class AlunoServlet extends HttpServlet
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
-		AlunoApplication jsa = new AlunoApplication();
+		AlunoApplication ap = new AlunoApplication();
 		Aluno a = new Aluno();
 		String id = request.getParameter("_id");
 		
@@ -32,7 +32,7 @@ public class AlunoServlet extends HttpServlet
 			}
 			if(request.getParameter("nota").isEmpty() == false)
 			{
-				mensagem.append("Preencha o campo de nota!");
+				mensagem.append("Preencha o campo de nota");
 				a.setNota(Integer.parseInt(request.getParameter("nota")));
 			}
 			if(request.getParameter("falta").isEmpty() == false)
@@ -50,11 +50,11 @@ public class AlunoServlet extends HttpServlet
 				mensagem.append("Preencha o campo de periodo!");
 				a.setNome(request.getParameter("periodo"));
 			}
-			mensagem.append(jsa.create(a));
+			mensagem.append(ap.create(a));
 			response.setContentType("text/html");
 			 
-			List<Aluno> cl = jsa.todos();
-			request.setAttribute("alunos", cl);
+			List<Aluno> alunos = ap.todos();
+			request.setAttribute("alunos", alunos);
 			mensagem = mensagem.equals(null) ? mensagem.append("Salvo com sucesso!") : mensagem;
 			request.setAttribute("mensagem", mensagem);
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
@@ -67,10 +67,11 @@ public class AlunoServlet extends HttpServlet
 }
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{
-		AlunoApplication jsa = new AlunoApplication();
-		List<Aluno> cl = new ArrayList<Aluno>();
+		AlunoApplication ap = new AlunoApplication();
+		response.setContentType("text/html");
+		List<Aluno> alunos = new ArrayList<Aluno>();
 		String mensagem = "";
-		request.setAttribute("alunos", cl);
+		request.setAttribute("alunos", alunos);
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 	
