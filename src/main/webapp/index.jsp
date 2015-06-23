@@ -9,15 +9,15 @@
 		<div id="formulario">
 			<form action="AlunoServlet" method="post">
 				<input type="hidden" name="_id" id="_id" value="${_id}"/>
-				<label>Nome</label>
+				<label>Nome</label><br>
 				<input type="text" name="nome" id="nome" value="${nome}"/>
-				<label>Matricula</label>
+				<label>Matricula</label><br>
 				<input type="text" name="matricula" id="matricula" value="${matricula}" />
-				<label>Periodo</label>
+				<label>Periodo</label><br>
 				<input type="text" name="periodo" id="periodo" value="${periodo}" />
-				<label>Nota</label>
+				<label>Nota</label><br>
 				<input type="text" name="nota" id="nota" value="${nota}" />
-				<label>Falta</label>
+				<label>Falta</label><br>
 				<input type="text" name="falta" id="falta" value="${falta}" />
 				<input type="submit" id="buscar" value="Salvar" />
 			</form>

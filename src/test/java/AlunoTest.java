@@ -1,28 +1,29 @@
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import junit.framework.Assert;
 
-import javax.servlet.ServletException;
-
-import org.bson.types.ObjectId;
 import org.junit.Test;
+//import static org.mockito.Mockito.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
-
-import com.controller.*;
+import com.controller.Aluno;
+import com.controller.AlunoApplication;
+import com.controller.AlunoServlet;
+import com.controller.SeleniumExample;
 
 public class AlunoTest
 {
-	/*@Test
+	WebDriver driver = new HtmlUnitDriver();
+	
+	@Test
 	public void testDescricao() 
 	{
 		AlunoServlet sv = new AlunoServlet();
-		Aluno a = new Aluno();
+		Aluno a = new Aluno(null, "Leandro", 86, 2,"1/2016", "122222");
 		String erroQueDeveAcontecer = "b";
 		String erroRetornado = "b";
 		assertEquals("c", erroQueDeveAcontecer, erroRetornado);
-	}*/
+	}
 	//testes com notas -------------------------------------------------------------------
 	@Test
 	public void testAlunoComNota90DeveSerAprovadoRecebeHomenagem()
@@ -199,4 +200,88 @@ public class AlunoTest
 		
 		assertEquals(false, valido);
 	}
+	@Test
+	public void testNota100()
+	{
+		AlunoApplication alunoApplication = new AlunoApplication();
+		
+		Aluno a = new Aluno();
+		
+		a.setNome("Marcus");
+		a.setMatricula("32323");
+		a.setFalta(1);
+		a.setNota(100);
+		a.setPeriodo("1/2015");
+		
+		boolean valido = alunoApplication.validar(a, new StringBuffer());
+		
+		assertEquals(true, valido);
+	}
+	@Test
+	public void testTodosVazios()
+	{
+		AlunoApplication alunoApplication = new AlunoApplication();
+		
+		Aluno a = new Aluno();
+		
+		a.setNome("");
+		a.setMatricula("");
+		a.setFalta(null);
+		a.setNota(null);
+		a.setPeriodo("");
+		
+		boolean valido = alunoApplication.validar(a, new StringBuffer());
+		
+		assertEquals(false, valido);
+	}
+	
+	@Test
+	public void testPeriodoEspacamento()
+	{
+		AlunoApplication alunoApplication = new AlunoApplication();
+		
+		Aluno a = new Aluno();
+		
+		a.setNome("Adao");
+		a.setMatricula("2323");
+		a.setFalta(1);
+		a.setNota(48);
+		a.setPeriodo(" ");
+		
+		boolean valido = alunoApplication.validar(a, new StringBuffer());
+		
+		assertEquals(false, valido);
+	}
+	
+	@Test
+	public void testSeleniumCompletouComSucesso()
+	{
+		
+		SeleniumExample.main(null);
+		Assert.assertEquals(true, true);
+		
+	}
+	
+	//-----------------------------------
+	/*@Test
+	public void testDoPostEDoGet()
+	{
+		AlunoServlet as = new AlunoServlet();
+		String mensagem = null;
+		HttpServletRequest request = mock(HttpServletRequest.class);       
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        try {
+			as.doPost(request, response);
+			as.doGet(request, response);
+		} catch (IOException e) {
+			mensagem = e.getMessage();
+		} catch (ServletException e) {
+			mensagem = e.getMessage();
+		}
+        catch(Exception e) {
+			mensagem = e.getMessage();
+		}
+        
+		assertNotEquals(mensagem, null);
+	}*/
 }

@@ -25,27 +25,27 @@ public class AlunoServlet extends HttpServlet
 		
 		try
 		{
-			if(request.getParameter("nome").isEmpty() == false)
+			if(request.getParameter("nome").isEmpty() == true)
 			{
 				mensagem.append("Preencha o campo de nome!");
 				a.setNome(request.getParameter("nome"));
 			}
-			if(request.getParameter("nota").isEmpty() == false)
+			if(request.getParameter("nota").isEmpty() == true)
 			{
 				mensagem.append("Preencha o campo de nota");
 				a.setNota(Integer.parseInt(request.getParameter("nota")));
 			}
-			if(request.getParameter("falta").isEmpty() == false)
+			if(request.getParameter("falta").isEmpty() == true)
 			{
 				mensagem.append("Preencha o campo de falta");
 				a.setFalta(Integer.parseInt(request.getParameter("falta")));
 			}
-			if(request.getParameter("matricula").isEmpty() == false)
+			if(request.getParameter("matricula").isEmpty() == true)
 			{
 				mensagem.append("Preencha o campo de matricula!");
 				a.setNome(request.getParameter("matricula"));
 			}
-			if(request.getParameter("periodo").isEmpty() == false)
+			if(request.getParameter("periodo").isEmpty() == true)
 			{
 				mensagem.append("Preencha o campo de periodo!");
 				a.setNome(request.getParameter("periodo"));
